@@ -10,10 +10,7 @@ public class UserController {
 
     public void changeEmail(int userId, String newEmail) {
         Object[] data = database.getUserById(userId);
-        String email = (String) data[1];
-        UserType type = (UserType) data[2];
-
-        User user = new User(userId, email, type);
+        User user = UserFactory.create(data);
 
         Object[] companyData = database.getCompany();
         String companyDomainName = (String) companyData[0];
