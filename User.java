@@ -20,27 +20,22 @@ public class User {
         return type;
     }
 
-    public int changeEmail(String newEmail, String companyDomainName, int numberOfEmployees) {
+    public void changeEmail(String newEmail, Company company) {
         if (this.email.equals(newEmail)) {
-            return numberOfEmployees;
+            return;
         }
 
-        String emailDomain = newEmail.split("@")[1];
-        boolean isEmailCorporate = emailDomain.equals(companyDomainName);
-
         // 의사결정 지점 1 : 사용자 유형 식별
-        UserType newType = isEmailCorporate ? UserType.Employee : UserType.Customer;
-        
+        UserType newType = company.isEmailCorporate(newEmail) ? UserType.Employee : UserType.Customer;
+
         // 의사결정 지점 2 : 회사 직원 수 계산 방법
         if (this.type != newType) {
-            int delta = newType == UserType.Employee ? 1 : -1;
-            numberOfEmployees += delta;
+            int delta = (newType == UserType.Employee) ? 1 : -1;
+            company.changeNumberOfEmployees(delta);
         }
 
         this.email = newEmail;
         this.type = newType;
-
-        return numberOfEmployees;
     }
 
 }

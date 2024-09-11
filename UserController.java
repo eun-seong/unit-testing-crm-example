@@ -9,17 +9,17 @@ public class UserController {
     private final MessageBus messageBus;
 
     public void changeEmail(int userId, String newEmail) {
-        Object[] data = database.getUserById(userId);
-        User user = UserFactory.create(data);
+        Object[] userData = database.getUserById(userId);
+        User user = UserFactory.create(userData);
 
         Object[] companyData = database.getCompany();
-        String companyDomainName = (String) companyData[0];
-        int numberOfEmployees = (int) companyData[1];
+        Company company = CompanyFactory.create(companyData);
 
-        int newNumberOfEmployees = user.changeEmail(newEmail, companyDomainName, numberOfEmployees);
+        user.changeEmail(newEmail, company);
 
-        database.saveCompany(newNumberOfEmployees);
+        database.saveCompany(company);
         database.saveUser(user);
+
         messageBus.sendEmailChangedMessage(userId, newEmail);
     }
 }
