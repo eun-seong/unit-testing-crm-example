@@ -1,19 +1,11 @@
 package com.dnd.namuiwiki.crm;
 
-public class Database {
-    public static Object[] getUserById(int userId) {
-        return new Object[]{};
-    }
+public interface Database {
+    Object[] getUserById(int userId);
 
-    public static Object[] getCompany() {
-        return new Object[]{};
-    }
+    Object[] getCompany();
 
-    public static void saveCompany(int newNumber) {
-        // save company
-    }
+    void saveCompany(int newNumber);
 
-    public static void saveUser(User user) {
-        // save user
-    }
+    void saveUser(User user);
 }

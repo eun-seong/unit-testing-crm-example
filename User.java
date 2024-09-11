@@ -1,9 +1,15 @@
 package com.dnd.namuiwiki.crm;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class User {
     private int userId;
     private String email;
     private UserType type;
+
+    private final Database Database;
+    private final MessageBus MessageBus;
 
     public int getUserId() {
         return userId;
