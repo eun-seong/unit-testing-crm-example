@@ -1,15 +1,12 @@
 package com.dnd.namuiwiki.crm;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class User {
     private int userId;
     private String email;
     private UserType type;
-
-    private final Database Database;
-    private final MessageBus MessageBus;
 
     public int getUserId() {
         return userId;
@@ -23,38 +20,27 @@ public class User {
         return type;
     }
 
-    public void changeEmail(int userId, String newEmail) {
-        Object[] data = Database.getUserById(userId);
-        this.userId = userId;
-        this.email = (String) data[1];
-        this.type = (UserType) data[2];
-
+    public int changeEmail(String newEmail, String companyDomainName, int numberOfEmployees) {
         if (this.email.equals(newEmail)) {
-            return;
+            return numberOfEmployees;
         }
-
-        Object[] companyData = Database.getCompany();
-        String companyDomainName = (String) companyData[0];
-        int numberOfEmployees = (int) companyData[1];
 
         String emailDomain = newEmail.split("@")[1];
         boolean isEmailCorporate = emailDomain.equals(companyDomainName);
 
         // 의사결정 지점 1 : 사용자 유형 식별
         UserType newType = isEmailCorporate ? UserType.Employee : UserType.Customer;
-
+        
         // 의사결정 지점 2 : 회사 직원 수 계산 방법
         if (this.type != newType) {
             int delta = newType == UserType.Employee ? 1 : -1;
-            int newNumber = numberOfEmployees + delta;
-            Database.saveCompany(newNumber);
+            numberOfEmployees += delta;
         }
 
         this.email = newEmail;
         this.type = newType;
 
-        Database.saveUser(this);
-        MessageBus.sendEmailChangedMessage(this.userId, newEmail);
+        return numberOfEmployees;
     }
 
 }
