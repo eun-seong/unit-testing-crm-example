@@ -8,9 +8,9 @@
 
 ## 단계별 코드 유형
 
-1. [Step 0](https://github.com/eun-seong/unit-testing-crm-example/commit/4b0341bffd8f540a926e14f2a3082d1532146d78)
+1. [Step 0](https://github.com/eun-seong/unit-testing-crm-example/commit/4b0341bffd8f540a926e14f2a3082d1532146d78)     
    ![image](https://github.com/user-attachments/assets/e2cf5dc5-6388-4765-a5c8-2575d9451654)
-2. [step2: 어플리케이션 서비스 계층 도입](https://github.com/eun-seong/unit-testing-crm-example/commit/fcc8faf70c7c1e1f74f4c8baf806017fdeb1095b)
+2. [step2: 어플리케이션 서비스 계층 도입](https://github.com/eun-seong/unit-testing-crm-example/commit/fcc8faf70c7c1e1f74f4c8baf806017fdeb1095b)     
    ![image](https://github.com/user-attachments/assets/eb956bf2-e277-43cb-a269-f90fb84c2c57)
-3. [step4: Company 클래스 도입](https://github.com/eun-seong/unit-testing-crm-example/commit/f4adad325759b01ad7d0a704db789f9ed3610bfd)
-   ![image](https://github.com/user-attachments/assets/c521340b-38d4-4b54-bcf8-de3a3f07996c)
+3. [step4: Company 클래스 도입](https://github.com/eun-seong/unit-testing-crm-example/commit/f4adad325759b01ad7d0a704db789f9ed3610bfd)     
+   ![image](https://github.com/user-attachments/assets/c521340b-38d4-4b54-bcf8-de3a3f07996c) 
